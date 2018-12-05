@@ -1,7 +1,8 @@
-package module;
+package model;
 
-public class TaskHelpDesk {
+public class Task {
     private String name;
+    private Department department;
 
     public void setName(String name) {
         this.name = name;

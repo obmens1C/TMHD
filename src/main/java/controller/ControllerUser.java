@@ -16,11 +16,11 @@ public class ControllerUser {
     @FXML
     private ComboBox comboBoxUserDepartment;
     @FXML
-    private Button buttonBackUser, buttonUserSave;
+    private Button buttonUserBack, buttonUserSave;
 
     @FXML
     public void onActionButtonBackUser(ActionEvent event) {
-        Stage stage = (Stage) buttonBackUser.getScene().getWindow();
+        Stage stage = (Stage) buttonUserBack.getScene().getWindow();
         stage.close();
     }
 }

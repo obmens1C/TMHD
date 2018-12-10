@@ -20,10 +20,10 @@ public class MainApp extends Application {
             String FXML_FILE = "/fxml/mainscene.fxml";
             String I18N_LOCALE = "i18n/user";
 
+            FXMLLoader loader = new FXMLLoader();
+
             Locale locale = new Locale("ru");
             ResourceBundle resourceBundle = ResourceBundle.getBundle(I18N_LOCALE, locale);
-
-            FXMLLoader loader = new FXMLLoader();
             loader.setResources(resourceBundle);
 
             Parent root = loader.load(getClass().getResourceAsStream(FXML_FILE));

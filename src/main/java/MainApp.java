@@ -23,11 +23,12 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
 
             Locale locale = new Locale("ru");
+
             ResourceBundle resourceBundle = ResourceBundle.getBundle(I18N_LOCALE, locale);
             loader.setResources(resourceBundle);
 
             Parent root = loader.load(getClass().getResourceAsStream(FXML_FILE));
-            stage.setTitle("Task manager Help Desk");
+            stage.setTitle(resourceBundle.getString("mainscene.Title"));
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException ex) {

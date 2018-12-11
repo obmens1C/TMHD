@@ -26,6 +26,6 @@
       </FXCollections>
     </items>
   </ComboBox>
-  <Button fx:id="buttonUserSave" layoutX="14.0" layoutY="203.0" mnemonicParsing="false" prefWidth="116.0" text="Save user" />
-  <Button fx:id="buttonUserBack" layoutX="220.0" layoutY="202.0" minHeight="21.0" mnemonicParsing="false" onAction="#onActionButtonBackUser" prefWidth="116.0" text="Back" />
+  <Button fx:id="buttonUserSave" layoutX="14.0" layoutY="203.0" mnemonicParsing="false" prefWidth="116.0" text="%button.userSave" />
+  <Button fx:id="buttonUserBack" layoutX="220.0" layoutY="202.0" minHeight="21.0" mnemonicParsing="false" onAction="#onActionButtonBackUser" prefWidth="116.0" text="%button.userBack" />
 </AnchorPane>

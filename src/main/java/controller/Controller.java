@@ -14,11 +14,14 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.NationalLocale;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Controller {
     NationalLocale nationalLocale;
+    ObservableList<ImageView> options = null;
 
     NationalLocale LocaleUSA = new NationalLocale(0, "en", Locale.ENGLISH, new Image("/img/united-states.png"));
     NationalLocale LocaleRUS = new NationalLocale(1, "ru", new Locale("ru"), new Image("/img/russia.png"));
@@ -26,7 +29,7 @@ public class Controller {
     @FXML
     public Button buttonExit, buttonNewUser;
     @FXML
-    public ComboBox changeLanguage;
+    public ComboBox<ImageView> changeLanguage = new ComboBox<>();
 
     @FXML
     public void onActionButtonExitMainScene(ActionEvent actionEvent) {
@@ -34,13 +37,10 @@ public class Controller {
     }
 
     @FXML
-    public void onActionChangeLanguage(ActionEvent actionEvent) {
+    public void onActionChangeLanguage(ActionEvent actionEvent) throws FileNotFoundException {
 
-        /*ObservableList comboBoxLanguage = FXCollections.observableArrayList();
-        comboBoxLanguage.add(LocaleUSA.getImageView());
-        comboBoxLanguage.add(LocaleRUS.getImageView());
-        changeLanguage.setButtonCell();
-        changeLanguage.setItems(comboBoxLanguage);*/
+        options = FXCollections.observableArrayList(LocaleUSA.getImageView(), LocaleRUS.getImageView());
+        changeLanguage.getItems().addAll(options);
     }
 
     @FXML

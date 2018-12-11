@@ -38,8 +38,10 @@ public class MainApp extends Application {
             Parent root = loader.load(getClass().getResourceAsStream(FXML_FILE));
             stage.setTitle(resourceBundle.getString("mainscene.Title"));
             stage.setScene(new Scene(root));
+
             Controller controller = loader.getController();
             controller.setNationalLocale(nationalLocale);
+
             stage.show();
         } catch (IOException ex) {
             ex.printStackTrace();

@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,19 +10,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.NationalLocale;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Controller {
     NationalLocale nationalLocale;
 
+    NationalLocale LocaleUSA = new NationalLocale(0, "en", Locale.ENGLISH, new Image("/img/united-states.png"));
+    NationalLocale LocaleRUS = new NationalLocale(1, "ru", new Locale("ru"), new Image("/img/russia.png"));
 
     @FXML
     public Button buttonExit, buttonNewUser;
     @FXML
-    public ComboBox<Image> changeLanguage = new ComboBox<>();
+    public ComboBox changeLanguage;
 
     @FXML
     public void onActionButtonExitMainScene(ActionEvent actionEvent) {
@@ -30,6 +36,11 @@ public class Controller {
     @FXML
     public void onActionChangeLanguage(ActionEvent actionEvent) {
 
+        /*ObservableList comboBoxLanguage = FXCollections.observableArrayList();
+        comboBoxLanguage.add(LocaleUSA.getImageView());
+        comboBoxLanguage.add(LocaleRUS.getImageView());
+        changeLanguage.setButtonCell();
+        changeLanguage.setItems(comboBoxLanguage);*/
     }
 
     @FXML
@@ -47,8 +58,10 @@ public class Controller {
             Stage stage = new Stage();
             stage.setTitle(resourceBundle.getString("user.Title"));
             stage.setScene(new Scene(root));
+
             ControllerUser controllerUser = loader.getController();
             controllerUser.setNationalLocale(nationalLocale);
+
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

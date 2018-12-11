@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,27 +8,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.NationalLocale;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Controller {
-    NationalLocale nationalLocale;
-    ObservableList<ImageView> options = null;
-
-    NationalLocale LocaleUSA = new NationalLocale(0, "en", Locale.ENGLISH, new Image("/img/united-states.png"));
-    NationalLocale LocaleRUS = new NationalLocale(1, "ru", new Locale("ru"), new Image("/img/russia.png"));
+    private NationalLocale nationalLocale;
 
     @FXML
     public Button buttonExit, buttonNewUser;
     @FXML
-    public ComboBox<ImageView> changeLanguage = new ComboBox<>();
+    public ComboBox<ImageView> changeLanguage;
 
     @FXML
     public void onActionButtonExitMainScene(ActionEvent actionEvent) {
@@ -37,10 +28,8 @@ public class Controller {
     }
 
     @FXML
-    public void onActionChangeLanguage(ActionEvent actionEvent) throws FileNotFoundException {
+    public void onActionChangeLanguage(ActionEvent actionEvent) {
 
-        options = FXCollections.observableArrayList(LocaleUSA.getImageView(), LocaleRUS.getImageView());
-        changeLanguage.getItems().addAll(options);
     }
 
     @FXML
@@ -70,5 +59,9 @@ public class Controller {
 
     public void setNationalLocale(NationalLocale nationalLocale) {
         this.nationalLocale = nationalLocale;
+    }
+
+    public void setChangeLanguageComboBox(ObservableList<ImageView> options) {
+        this.changeLanguage.getItems().addAll(options);
     }
 }

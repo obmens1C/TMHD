@@ -1,9 +1,12 @@
 import controller.Controller;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.NationalLocale;
 
@@ -13,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class MainApp extends Application {
 
-    NationalLocale nationalLocale;
+    private NationalLocale nationalLocale;
 
     public static void main(String[] args) throws Exception {
         launch(args);
@@ -41,6 +44,8 @@ public class MainApp extends Application {
 
             Controller controller = loader.getController();
             controller.setNationalLocale(nationalLocale);
+            ObservableList<ImageView> optionsLanguage = FXCollections.observableArrayList(LocaleUSA.getImageView(), LocaleRUS.getImageView());
+            controller.setChangeLanguageComboBox(optionsLanguage);
 
             stage.show();
         } catch (IOException ex) {
@@ -48,7 +53,7 @@ public class MainApp extends Application {
         }
     }
 
-    public void setNationalLocale(NationalLocale nationalLocale) {
+    private void setNationalLocale(NationalLocale nationalLocale) {
         this.nationalLocale = nationalLocale;
     }
 }

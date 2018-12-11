@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 
 public class Controller {
     private NationalLocale nationalLocale;
+    private ObservableList<ImageView> options;
 
     @FXML
     public Button buttonExit, buttonNewUser;
@@ -29,7 +30,7 @@ public class Controller {
 
     @FXML
     public void onActionChangeLanguage(ActionEvent actionEvent) {
-
+        //https://stackoverflow.com/questions/32362802/javafx-combobox-cells-disappear-when-clicked
     }
 
     @FXML
@@ -62,6 +63,8 @@ public class Controller {
     }
 
     public void setChangeLanguageComboBox(ObservableList<ImageView> options) {
+        this.options = options;
+
         this.changeLanguage.getItems().addAll(options);
     }
 }

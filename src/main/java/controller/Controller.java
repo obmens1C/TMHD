@@ -7,17 +7,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.NationalLocale;
 
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Controller {
+    NationalLocale nationalLocale;
+
 
     @FXML
     public Button buttonExit, buttonNewUser;
     @FXML
-    public ComboBox changeLanguage;
+    public ComboBox<Image> changeLanguage = new ComboBox<>();
 
     @FXML
     public void onActionButtonExitMainScene(ActionEvent actionEvent) {
@@ -37,17 +40,22 @@ public class Controller {
 
             FXMLLoader loader = new FXMLLoader();
 
-            ResourceBundle resourceBundle = ResourceBundle.getBundle(I18N_LOCALE, Locale.getDefault());
+            ResourceBundle resourceBundle = ResourceBundle.getBundle(I18N_LOCALE, nationalLocale.getLocale());
             loader.setResources(resourceBundle);
 
             Parent root = loader.load(getClass().getResourceAsStream(FXML_FILE));
             Stage stage = new Stage();
             stage.setTitle(resourceBundle.getString("user.Title"));
             stage.setScene(new Scene(root));
+            ControllerUser controllerUser = loader.getController();
+            controllerUser.setNationalLocale(nationalLocale);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void setNationalLocale(NationalLocale nationalLocale) {
+        this.nationalLocale = nationalLocale;
+    }
 }

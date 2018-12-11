@@ -7,8 +7,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.NationalLocale;
 
 public class ControllerUser {
+    NationalLocale nationalLocale;
+
     @FXML
     private Label fieldID;
     @FXML
@@ -22,5 +25,9 @@ public class ControllerUser {
     public void onActionButtonBackUser(ActionEvent event) {
         Stage stage = (Stage) buttonUserBack.getScene().getWindow();
         stage.close();
+    }
+
+    public void setNationalLocale(NationalLocale nationalLocale) {
+        this.nationalLocale = nationalLocale;
     }
 }

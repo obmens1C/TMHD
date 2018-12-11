@@ -18,7 +18,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         try {
             String FXML_FILE = "/fxml/mainscene.fxml";
-            String I18N_LOCALE = "i18n/user";
+            String I18N_LOCALE = "i18n/mainscene";
 
             FXMLLoader loader = new FXMLLoader();
 

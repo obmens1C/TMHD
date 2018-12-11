@@ -4,6 +4,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class MainApp extends Application {
 
     public static void main(String[] args) throws Exception {
@@ -12,11 +16,22 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fxmlFile = "/fxml/mainscene.fxml";
-        FXMLLoader loader = new FXMLLoader();
-        Parent root = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
-        stage.setTitle("Task manager Help Desk");
-        stage.setScene(new Scene(root));
-        stage.show();
+        try {
+            String FXML_FILE = "/fxml/mainscene.fxml";
+            String I18N_LOCALE = "i18n/mainscene";
+
+            FXMLLoader loader = new FXMLLoader();
+
+            Locale locale = new Locale("ru");
+            ResourceBundle resourceBundle = ResourceBundle.getBundle(I18N_LOCALE, locale);
+            loader.setResources(resourceBundle);
+
+            Parent root = loader.load(getClass().getResourceAsStream(FXML_FILE));
+            stage.setTitle("Task manager Help Desk");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
